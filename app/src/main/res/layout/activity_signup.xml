@@ -8,14 +8,14 @@
     android:background="#E8F5E9">
 
     <TextView
-        android:text="Create Account"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#1B5E20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="Create Account"
+        android:textColor="#1B5E20"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/signupEmail"
@@ -36,13 +36,20 @@
         android:padding="12dp"
         android:background="@android:drawable/edit_text" />
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/signup_Confirm_Password"
+        android:layout_width="match_parent"
+        android:layout_height="105dp"
+        android:hint="confirm_password"/>
+
     <Button
         android:id="@+id/signupBtn"
-        android:text="Sign Up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#388E3C"
-        android:textColor="#FFF"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="Sign Up"
+        android:textColor="#FFF" />
+
 
 </LinearLayout>

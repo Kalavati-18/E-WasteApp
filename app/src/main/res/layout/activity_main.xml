@@ -8,14 +8,14 @@
     android:background="#E8F5E9">
 
     <TextView
-        android:text="E-Waste App Login"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#1B5E20"
+        android:layout_width="246dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="E-Waste App Login"
+        android:textColor="#1B5E20"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/email"
