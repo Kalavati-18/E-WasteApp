@@ -1,46 +1,43 @@
 package com.example.e_waste_app;
 
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ImageButton;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText email, password;
-    Button loginBtn;
-    TextView signupLink;
+    ImageButton btnHome, btnInfo, btnUploadNav, btnProfile;
+    FloatingActionButton fabCenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        loginBtn = findViewById(R.id.loginBtn);
-        signupLink = findViewById(R.id.signupLink);
+        btnHome = findViewById(R.id.btnHome);
+        btnInfo = findViewById(R.id.btnInfo);
+        btnUploadNav = findViewById(R.id.btnUploadNav);
+        btnProfile = findViewById(R.id.btnProfile);
+        fabCenter = findViewById(R.id.fabCenter);
 
-        loginBtn.setOnClickListener(v -> {
-            String e = email.getText().toString();
-            String p = password.getText().toString();
+        // default fragment
+        replaceFragment(new HomeFragment());
 
-            if(e.isEmpty() || p.isEmpty()){
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
-                // you can go to next activity
-                // startActivity(new Intent(this, HomeActivity.class));
-            }
-        });
+        btnHome.setOnClickListener(v -> replaceFragment(new HomeFragment()));
+//        btnInfo.setOnClickListener(v -> replaceFragment(new NGOListFragment()));
+//        btnUploadNav.setOnClickListener(v -> replaceFragment(new UploadFragment()));
+//        btnProfile.setOnClickListener(v -> replaceFragment(new ProfileFragment()));
+//
+//        fabCenter.setOnClickListener(v -> replaceFragment(new UploadFragment()));
+    }
 
-        signupLink.setOnClickListener(v -> {
-            Intent i = new Intent(MainActivity.this, SignupActivity.class);
-            startActivity(i);
-        });
+    private void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
     }
 }

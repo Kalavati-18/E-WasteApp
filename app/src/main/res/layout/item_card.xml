@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/card_bg_dark"
+    android:padding="12dp"
+    android:layout_marginBottom="12dp">
+
+    <!-- Top row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/circle_white"
+            android:background="@drawable/circle_white" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:text="Name"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+
+            <TextView
+                android:id="@+id/tvDesc"
+                android:text="Description"
+                android:textColor="#CCCCCC"
+                android:textSize="14sp"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgLarge"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="centerCrop" />
+</LinearLayout>

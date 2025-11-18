@@ -1,40 +1,38 @@
 package com.example.e_waste_app;
 
-import static com.example.e_waste_app.R.id.signup_Confirm_Password;
-
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class SignupActivity extends AppCompatActivity {
-
-    EditText email, password, confirm_password;
-    Button signupBtn;
+    EditText etEmail, etPassword;
+    Button btnSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        email = findViewById(R.id.signupEmail);
-        password = findViewById(R.id.signupPassword);
-        confirm_password=findViewById(R.id.signup_Confirm_Password);
-        signupBtn = findViewById(R.id.signupBtn);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        btnSignup = findViewById(R.id.btnSignup);
 
-        signupBtn.setOnClickListener(v -> {
-            String e = email.getText().toString();
-            String p = password.getText().toString();
-            String cp=confirm_password.getText().toString();
+        btnSignup.setOnClickListener(v -> {
+            String email = etEmail.getText().toString().trim();
+            String pass = etPassword.getText().toString().trim();
 
-            if(e.isEmpty() || p.isEmpty()){
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
-                finish(); // go back to login
+            if (email.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(this, "Enter details", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            // Simulate success
+            Toast.makeText(this, "Signup successful", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
         });
     }
 }
