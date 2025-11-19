@@ -24,15 +24,27 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
+    // It's good practice to enable viewBinding to avoid findViewById
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-    implementation("com.squareup.picasso:picasso:2.71828")
+    // Core Android libraries
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
-
-    // Downgraded activity library to match AGP 8.8.1 and compileSdk 35
     implementation("androidx.activity:activity:1.10.1")
+
+    // Picasso for image loading
+    implementation("com.squareup.picasso:picasso:2.8") // I've updated this to the latest version
+
+    // RecyclerView for displaying lists
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // CardView for the item_card layout
+    implementation("androidx.cardview:cardview:1.0.0")
 }
