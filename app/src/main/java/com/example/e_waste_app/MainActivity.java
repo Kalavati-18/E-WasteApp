@@ -2,6 +2,8 @@ package com.example.e_waste_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         btnProfile = findViewById(R.id.btnProfile);
         fabCenter = findViewById(R.id.fabCenter);
 
+        ImageButton btnInfo = findViewById(R.id.btnInfo);
+
         // default fragment
         replaceFragment(new HomeFragment());
 
@@ -31,8 +35,12 @@ public class MainActivity extends AppCompatActivity {
 //        btnInfo.setOnClickListener(v -> replaceFragment(new NGOListFragment()));
 //        btnUploadNav.setOnClickListener(v -> replaceFragment(new UploadFragment()));
 //        btnProfile.setOnClickListener(v -> replaceFragment(new ProfileFragment()));
-//
 //        fabCenter.setOnClickListener(v -> replaceFragment(new UploadFragment()));
+
+        btnInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void replaceFragment(Fragment fragment) {

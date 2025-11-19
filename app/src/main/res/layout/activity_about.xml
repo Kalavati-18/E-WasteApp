@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/gradient_bg">
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-Waste Management"
+        android:textSize="30sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/aboutInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Our E-Waste Management App helps users dispose electronic waste in a safe and responsible way. The app makes it simple to identify, store, and submit e-waste by providing clear guidance and easy-to-use features.\n\nIt connects users with nearby authorized recycling centres, offers information on proper disposal methods, and encourages environmentally friendly habits.\n\nOur goal is to support a cleaner environment by making e-waste disposal effortless for everyone."
+        android:textColor="#EEEEEE"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:padding="16dp"/>
+</LinearLayout>

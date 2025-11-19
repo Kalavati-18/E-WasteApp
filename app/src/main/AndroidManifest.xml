@@ -10,6 +10,9 @@
         android:label="E-Waste"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
+        <activity
             android:name=".CardItem"
             android:exported="false" />
         <activity
