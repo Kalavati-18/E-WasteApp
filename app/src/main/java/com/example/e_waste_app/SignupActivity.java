@@ -11,10 +11,14 @@ public class SignupActivity extends AppCompatActivity {
     EditText etEmail, etPassword;
     Button btnSignup;
 
+    DatabaseHelper db; // Added DatabaseHelper
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        db = new DatabaseHelper(this); // Initialize database
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
@@ -29,10 +33,15 @@ public class SignupActivity extends AppCompatActivity {
                 return;
             }
 
-            // Simulate success
-            Toast.makeText(this, "Signup successful", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
+            // ✅ Save user to SQLite
+            long result = db.addUser(email, pass);
+            if(result > 0){
+                Toast.makeText(this, "Signup successful", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Signup failed", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

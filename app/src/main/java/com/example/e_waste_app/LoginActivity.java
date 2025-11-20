@@ -15,10 +15,14 @@ public class LoginActivity extends AppCompatActivity {
     Button btnSignIn;
     TextView tvGotoSignup;
 
+    DatabaseHelper db; // Added DatabaseHelper
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        db = new DatabaseHelper(this); // Initialize database
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
@@ -34,11 +38,23 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Simulate success
-            Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            // ✅ SQLite check added
+            if (db.checkUser(email, pass)) {
+
+                // ✅ ADD THIS: store logged-in email
+                getSharedPreferences("user_pref", MODE_PRIVATE)
+                        .edit()
+                        .putString("email", email)
+                        .apply();
+
+                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+            }
         });
+
 
         tvGotoSignup.setOnClickListener(v ->
                 startActivity(new Intent(this, SignupActivity.class)));

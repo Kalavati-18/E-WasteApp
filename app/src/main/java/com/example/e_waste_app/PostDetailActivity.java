@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
 
-public class ProfileDetailsActivity extends AppCompatActivity {
+public class PostDetailActivity extends AppCompatActivity {
 
     TextView tvName, tvUsername, tvEmail, tvPhone;
     ImageView imgAvatar, imgPost;
@@ -16,8 +16,9 @@ public class ProfileDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_detail);  // use your XML file
+        setContentView(R.layout.activity_post_detail);
 
+        // Initialize views
         tvName = findViewById(R.id.tvName);
         tvUsername = findViewById(R.id.tvUsername);
         tvEmail = findViewById(R.id.tvEmail);
@@ -26,25 +27,34 @@ public class ProfileDetailsActivity extends AppCompatActivity {
         imgAvatar = findViewById(R.id.imgAvatar);
         imgPost = findViewById(R.id.imgPost);
 
-        // Get intent data
+        // Get data from Intent
         String name = getIntent().getStringExtra("name");
         String email = getIntent().getStringExtra("email");
         String phone = getIntent().getStringExtra("phone");
-        String profileUrl = getIntent().getStringExtra("profileUrl");
+        String avatarUrl = getIntent().getStringExtra("avatarUrl");
         String imageUrl = getIntent().getStringExtra("imageUrl");
 
+        // Set values to views
         tvName.setText(name);
         tvEmail.setText(email);
         tvPhone.setText(phone);
 
-        // Extract username before '@'
+        // Extract username from email (before @)
         if (email != null && email.contains("@")) {
             tvUsername.setText(email.split("@")[0]);
         } else {
-            tvUsername.setText(email);
+            tvUsername.setText("");
         }
 
-        Picasso.get().load(profileUrl).placeholder(R.drawable.ic_user).into(imgAvatar);
-        Picasso.get().load(imageUrl).into(imgPost);
+        // Load images using Picasso
+        Picasso.get()
+                .load(avatarUrl)
+                .placeholder(R.drawable.ic_person)
+                .into(imgAvatar);
+
+        Picasso.get()
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_image)
+                .into(imgPost);
     }
 }

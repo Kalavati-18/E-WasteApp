@@ -1,5 +1,7 @@
 package com.example.e_waste_app;
 
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,8 +18,9 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     RecyclerView rv;
-    PostAdapter adapter;
-    List<UserPost> list;
+    CardAdapter adapter;
+    List<CardItem> list;
+    DatabaseHelper db;
 
     public HomeFragment() {}
 
@@ -30,42 +33,23 @@ public class HomeFragment extends Fragment {
         rv = v.findViewById(R.id.rvCards);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        list = generateSamplePosts();
+        db = new DatabaseHelper(getContext());
+        list = new ArrayList<>();
 
-        adapter = new PostAdapter(getContext(), list);
+        // Load posts from DB
+        Cursor cursor = db.getPosts();
+        while(cursor.moveToNext()){
+            int userId = cursor.getInt(cursor.getColumnIndexOrThrow("user_id"));
+            byte[] imgBytes = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
+            Bitmap bitmap = DatabaseHelper.getBitmapFromBytes(imgBytes);
+            String userName = db.getUserNameById(userId); // method to get username by ID
+            list.add(new CardItem(userName, bitmap));
+        }
+        cursor.close();
+
+        adapter = new CardAdapter(list, getContext());
         rv.setAdapter(adapter);
 
         return v;
-    }
-
-    private List<UserPost> generateSamplePosts() {
-
-        List<UserPost> items = new ArrayList<>();
-
-        items.add(new UserPost(
-                "John Doe",
-                "john@gmail.com",
-                "9876543210",
-                "https://picsum.photos/200",
-                "https://picsum.photos/600/300"
-        ));
-
-        items.add(new UserPost(
-                "Alice Smith",
-                "alice@gmail.com",
-                "9876543211",
-                "https://picsum.photos/240",
-                "https://picsum.photos/601/301"
-        ));
-
-        items.add(new UserPost(
-                "Bob Johnson",
-                "bob@gmail.com",
-                "9876543212",
-                "https://picsum.photos/260",
-                "https://picsum.photos/602/302"
-        ));
-
-        return items;
     }
 }

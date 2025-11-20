@@ -41,23 +41,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         Picasso.get()
                 .load(post.getProfileImage())
-                .placeholder(R.drawable.ic_user)
+                .placeholder(R.drawable.ic_person)
                 .into(holder.imgProfile);
 
         Picasso.get()
                 .load(post.getPostImage())
+                .placeholder(R.drawable.ic_image)
                 .into(holder.imgPost);
 
-        // Open Profile
-        holder.itemView.setOnClickListener(v -> {
-
-            Intent intent = new Intent(context, ProfileDetailsActivity.class);
+        // Click listener on post image
+        holder.imgPost.setOnClickListener(v -> {
+            Intent intent = new Intent(context, PostDetailActivity.class);
             intent.putExtra("name", post.getUserName());
             intent.putExtra("email", post.getUserEmail());
             intent.putExtra("phone", post.getUserPhone());
-            intent.putExtra("profileUrl", post.getProfileImage());
+            intent.putExtra("avatarUrl", post.getProfileImage()); // matching key
             intent.putExtra("imageUrl", post.getPostImage());
-
             context.startActivity(intent);
         });
     }

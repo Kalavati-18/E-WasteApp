@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgPreview"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:background="#DDDDDD" />
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnRetake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Retake"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#F44336"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

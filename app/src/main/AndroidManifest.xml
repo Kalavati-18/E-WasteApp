@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
         android:label="E-Waste"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        <!-- Profile Details Activity (ADDED – fixes your crash) -->
+        <activity
+            android:name=".PostDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CardAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".CardItem"
+            android:exported="false" /> <!-- Profile Details Activity (ADDED – fixes your crash) -->
         <activity
             android:name=".ProfileDetailsActivity"
-            android:exported="false" />
-
-        <!-- About Screen -->
+            android:exported="false" /> <!-- About Screen -->
         <activity
             android:name=".AboutActivity"
-            android:exported="false" />
-
-        <!-- Login Screen (LAUNCHER) -->
+            android:exported="false" /> <!-- Login Screen (LAUNCHER) -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Signup Screen -->
+        </activity> <!-- Signup Screen -->
         <activity
             android:name=".SignupActivity"
-            android:exported="false" />
-
-        <!-- Main Dashboard -->
+            android:exported="false" /> <!-- Main Dashboard -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
